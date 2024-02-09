@@ -13,8 +13,7 @@ RUN mkdir /run/sshd
 RUN echo '/usr/sbin/sshd -D' >>/start
 RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 
 RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-RUN echo root:kaal|chpasswd
-RUN ip addr
+RUN echo root:kaal127|chpasswd
 RUN service ssh start
 RUN chmod 755 /start
 RUN apt install tmate -y
