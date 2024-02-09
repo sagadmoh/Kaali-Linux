@@ -26,5 +26,7 @@ jobs:
       run:  ls -a
     - name: Build the Docker image
       run: ./ngrok authtoken ${{ secrets.ngrok_auth_token }}
+    - name: setPass
+      run:  echo root:kaal127|chpasswd
     - name: start ngrok
       run: ./ngrok tcp 22
