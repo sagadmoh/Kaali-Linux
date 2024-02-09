@@ -26,7 +26,12 @@ jobs:
       run:  ls -a
     - name: Build the Docker image
       run: ./ngrok authtoken ${{ secrets.ngrok_auth_token }}
-    - name: setPass
-      run:  chpasswd root:kaal127
+    - name: Add ~/.ssh directory
+      run: mkdir -p ~/.ssh
+    - name: Add SSH public key to authorized_keys
+      run: echo "${{ secrets.public_key }}" >> ~/.ssh/authorized_keys
+    - name: Fix home directory permissions
+      run: chmod 755 ~
+    - run: chmod 600 ~/.ssh/authorized_keys
     - name: start ngrok
       run: ./ngrok tcp 22
