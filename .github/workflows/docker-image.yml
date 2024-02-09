@@ -22,8 +22,10 @@ jobs:
       run:  ls -a
     - name: unzip
       run:  unzip ngrok.zip
+    - name: ls2
+      run:  ls -a
     - name: Build the Docker image
-      run: ./ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
+      run: ./ngrok authtoken $Env:NGROK_AUTH_TOKEN
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: echo
