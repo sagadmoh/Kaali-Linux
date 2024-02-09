@@ -17,7 +17,7 @@ jobs:
     - name: download ngrok
       run: wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip
     - name: download unzip
-      run:  apt install ssh wget unzip -y
+      run:  sudo apt install ssh wget unzip -y
     - name: unzip
       run:  unzip ngrok.zip
     - name: Build the Docker image
