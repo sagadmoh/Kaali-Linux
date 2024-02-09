@@ -7,7 +7,7 @@ ENV NGROK_TOKEN=${NGROK_TOKEN}
 RUN apt install ssh wget unzip -y > /dev/null 2>&1
 RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip > /dev/null 2>&1
 RUN unzip ngrok.zip
-RUN ./ngrok config add-authtoken ${secrets.NGROK_AUTH_TOKEN}
+RUN ./ngrok config add-authtoken ${NGROK_AUTH_TOKEN}
 RUN ./ngrok tcp 22
 RUN mkdir /run/sshd
 RUN echo '/usr/sbin/sshd -D' >>/start
